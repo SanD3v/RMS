@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
-import org.checkerframework.checker.index.qual.NonNegative;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -15,12 +13,11 @@ import lombok.NonNull;
 @Entity
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
 public class Menu {
 	public Menu(Long id, @NonNull @NotEmpty(message = "'name' field was empty") String name,
 			@NonNull @NotEmpty(message = "'description' field was empty") String description,
 			@NonNull @NotEmpty(message = "'additional' field was empty") String additional,
-			@NonNull @NotEmpty(message = "'image' field was empty") String image, @NonNegative int price) {
+			@NonNull @NotEmpty(message = "'image' field was empty") String image, int price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -55,7 +52,6 @@ public class Menu {
 	@Column(name = "image", nullable = false)
 	private String image;
 
-//	@NonNegative
 	@Column(name = "price", nullable = false)
 	private int price;
 
