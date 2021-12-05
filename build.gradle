@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.capgemini'
@@ -15,10 +16,14 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven {
+        url 'https://repo.jenkins-ci.org/public/'
+    }
 }
 
 dependencies {
+	testImplementation 'org.jenkins-ci.main:jenkins-war:2.86'
 	implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.1'
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
